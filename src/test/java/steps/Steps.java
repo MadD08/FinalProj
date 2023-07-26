@@ -83,6 +83,7 @@ public class Steps {
         for (DataTableRow row : dataForOrderTable.getGherkinRows()) {
             dataForOrder.put(row.getCells().get(0), row.getCells().get(1));
         }
+        dataForOrder = dataForOrderTable.asMap(String.class, String.class);
         driver.findElement(firstNameInputLocator).sendKeys(dataForOrder.get("name"));
         driver.findElement(secondNameInputLocator).sendKeys(dataForOrder.get("secondName"));
         driver.findElement(phoneInputLocator).sendKeys(dataForOrder.get("phone"));
@@ -115,6 +116,7 @@ public class Steps {
         for (DataTableRow row : cardDetailsTable.getGherkinRows()) {
             dataForOrder.put(row.getCells().get(0), row.getCells().get(1));
         }
+        cardDetails = cardDetailsTable.asMap(String.class, String.class);
         driver.findElement(cardNumberLocator).sendKeys(cardDetails.get("cardNumber"));
         driver.findElement(dueMonthLocator).sendKeys(cardDetails.get("mm"));
         driver.findElement(dueYearLocator).sendKeys(cardDetails.get("yy"));
