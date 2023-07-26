@@ -110,8 +110,11 @@ public class Steps {
     }
 
     @Then("I feel my card details and press pay button")
-    public void i_feel_my_card_details_and_press_pay_button(Map<String, String> cardDetails) throws Throwable {
-        this.cardDetails = cardDetails;
+    public void i_feel_my_card_details_and_press_pay_button(DataTable cardDetailsTable) throws Throwable {
+        cardDetails = new HashMap<String, String>();
+        for (DataTableRow row : cardDetailsTable.getGherkinRows()) {
+            dataForOrder.put(row.getCells().get(0), row.getCells().get(1));
+        }
         driver.findElement(cardNumberLocator).sendKeys(cardDetails.get("cardNumber"));
         driver.findElement(dueMonthLocator).sendKeys(cardDetails.get("mm"));
         driver.findElement(dueYearLocator).sendKeys(cardDetails.get("yy"));
