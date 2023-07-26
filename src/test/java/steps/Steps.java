@@ -1,16 +1,13 @@
 package steps;
 
-import cucumber.api.DataTable;
-import cucumber.api.PendingException;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import gherkin.formatter.model.DataTableRow;
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Steps {
@@ -46,7 +43,6 @@ public class Steps {
     @Given("I am a new customer and I open the \"Home page\"")
     public void i_open_the() throws Throwable {
         driver.get("https://www.yakaboo.ua");
-        throw new PendingException();
     }
 
 
@@ -54,35 +50,27 @@ public class Steps {
     public void i_search_for(String bookName) throws Throwable {
         driver.findElement(searchFieldLocator).sendKeys(bookName);
         driver.findElement(searchButton).click();
-        throw new PendingException();
     }
 
 
     @And("I select the product with title \"Head First. Java\"")
     public void i_select_the_product_with_title() throws Throwable {
         driver.findElement(searchBookByTitle).click();
-        throw new PendingException();
     }
 
     @And("I click \"Add to basket\" button for the given needed product and close the book info page")
     public void i_click_button_for_the_given_needed_product_and_close_the_book_info_page() throws Throwable {
         driver.findElement(searchByAddToCart).click();
         driver.findElement(searchCloseButton).click();
-        throw new PendingException();
     }
 
     @And("I click on the basket icon on \"Search Results Page\"")
     public void i_click_on_the_basket_icon_on() throws Throwable {
         driver.findElement(searchCartButton).click();
-        throw new PendingException();
     }
 
     @And("I am filling the details:")
     public void i_am_filling_the_details(DataTable dataForOrderTable) throws Throwable {
-        dataForOrder = new HashMap<String, String>();
-        for (DataTableRow row : dataForOrderTable.getGherkinRows()) {
-            dataForOrder.put(row.getCells().get(0), row.getCells().get(1));
-        }
         dataForOrder = dataForOrderTable.asMap(String.class, String.class);
         driver.findElement(firstNameInputLocator).sendKeys(dataForOrder.get("name"));
         driver.findElement(secondNameInputLocator).sendKeys(dataForOrder.get("secondName"));
@@ -95,34 +83,26 @@ public class Steps {
         driver.findElement(desiredCityLocator).click();
         driver.findElement(addressInputLocator).sendKeys(dataForOrder.get("address"));
         driver.findElement(desiredAddressLocator).click();
-        throw new PendingException();
     }
 
     @And("I select online payment option")
     public void i_select_online_payment_option() throws Throwable {
         driver.findElement(paymentMethodLocator).click();
-        throw new PendingException();
     }
 
     @And("I press the \"Continue to payment\" button")
     public void i_press_the_button(String arg0) throws Throwable {
         driver.findElement(checkoutButtonLocator).click();
-        throw new PendingException();
     }
 
     @Then("I feel my card details and press pay button")
     public void i_feel_my_card_details_and_press_pay_button(DataTable cardDetailsTable) throws Throwable {
-        cardDetails = new HashMap<String, String>();
-        for (DataTableRow row : cardDetailsTable.getGherkinRows()) {
-            dataForOrder.put(row.getCells().get(0), row.getCells().get(1));
-        }
         cardDetails = cardDetailsTable.asMap(String.class, String.class);
         driver.findElement(cardNumberLocator).sendKeys(cardDetails.get("cardNumber"));
         driver.findElement(dueMonthLocator).sendKeys(cardDetails.get("mm"));
         driver.findElement(dueYearLocator).sendKeys(cardDetails.get("yy"));
         driver.findElement(cvvLocator).sendKeys(cardDetails.get("cvv"));
         driver.findElement(payButtonLocator).click();
-        throw new PendingException();
     }
 
 

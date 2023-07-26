@@ -17,7 +17,7 @@ Feature: Checkout for a customer.
       | address    | 22220         |
     And I select online payment option
     And I press the "Continue to payment" button
-    And I feel my card details and press pay button
+    Then I feel my card details and press pay button
       | cardNumber | 1111111111111111 |
       | mm         | 11               |
       | yy         | 11               |
