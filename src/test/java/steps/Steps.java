@@ -47,30 +47,30 @@ public class Steps {
 
 
     @And("I search for \"Head First. Java\"")
-    public void i_search_for(String bookName) throws Throwable {
+    public void i_search_for(String bookName) {
         driver.findElement(searchFieldLocator).sendKeys(bookName);
         driver.findElement(searchButton).click();
     }
 
 
     @And("I select the product with title \"Head First. Java\"")
-    public void i_select_the_product_with_title() throws Throwable {
+    public void i_select_the_product_with_title() {
         driver.findElement(searchBookByTitle).click();
     }
 
     @And("I click \"Add to basket\" button for the given needed product and close the book info page")
-    public void i_click_button_for_the_given_needed_product_and_close_the_book_info_page() throws Throwable {
+    public void i_click_button_for_the_given_needed_product_and_close_the_book_info_page() {
         driver.findElement(searchByAddToCart).click();
         driver.findElement(searchCloseButton).click();
     }
 
     @And("I click on the basket icon on \"Search Results Page\"")
-    public void i_click_on_the_basket_icon_on() throws Throwable {
+    public void i_click_on_the_basket_icon_on() {
         driver.findElement(searchCartButton).click();
     }
 
     @And("I am filling the details:")
-    public void i_am_filling_the_details(DataTable dataForOrderTable) throws Throwable {
+    public void i_am_filling_the_details(DataTable dataForOrderTable) {
         dataForOrder = dataForOrderTable.asMap(String.class, String.class);
         driver.findElement(firstNameInputLocator).sendKeys(dataForOrder.get("name"));
         driver.findElement(secondNameInputLocator).sendKeys(dataForOrder.get("secondName"));
@@ -86,17 +86,17 @@ public class Steps {
     }
 
     @And("I select online payment option")
-    public void i_select_online_payment_option() throws Throwable {
+    public void i_select_online_payment_option() {
         driver.findElement(paymentMethodLocator).click();
     }
 
     @And("I press the \"Continue to payment\" button")
-    public void i_press_the_button(String arg0) throws Throwable {
+    public void i_press_the_button() {
         driver.findElement(checkoutButtonLocator).click();
     }
 
     @Then("I feel my card details and press pay button")
-    public void i_feel_my_card_details_and_press_pay_button(DataTable cardDetailsTable) throws Throwable {
+    public void i_feel_my_card_details_and_press_pay_button(DataTable cardDetailsTable) {
         cardDetails = cardDetailsTable.asMap(String.class, String.class);
         driver.findElement(cardNumberLocator).sendKeys(cardDetails.get("cardNumber"));
         driver.findElement(dueMonthLocator).sendKeys(cardDetails.get("mm"));
