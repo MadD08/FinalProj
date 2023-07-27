@@ -26,7 +26,7 @@ public class Steps {
     private Map<String, String> dataForOrder;
     private Map<String, String> cardDetails;
     private By searchFieldLocator = By.xpath("//div[@class='ui-search-form-input']/input");
-    private By searchButton = By.xpath("//div[@class='ui-search-form-input']/button");
+    private By searchButton = By.xpath("//div[@class='ui-search-form-input on-search-mode']/button");
     private By searchBookByTitle = By.xpath("//a[@title='Head First. Java']");
     private By searchCartButton = By.xpath("//span[@class='ui-btn-shopping-cart__title']");
     private By searchByAddToCart = By.xpath("//div[@class='product-sidebar__ordering']//button[contains(text(),'До кошика')]");
