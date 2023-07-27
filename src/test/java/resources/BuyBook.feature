@@ -3,8 +3,8 @@ Feature: Checkout for a customer.
 
   Scenario: Proceed to checkout, fill all the details
     Given I am a new customer and I open the "Home page"
-    And I search for "Head First. Java"
-    And I select the product with title "Head First. Java"
+    And I search for "Пришвидшений курс Python"
+    And I select the product with title "Пришвидшений курс Python"
     And I click "Add to basket" button for the given needed product and close the book info page
     And I click on the basket icon on "Search Results Page"
     And I am filling the details:
@@ -15,7 +15,6 @@ Feature: Checkout for a customer.
       | country    | Україна       |
       | city       | Київ          |
       | address    | 22220         |
-    And I select online payment option
     And I press the "Continue to payment" button
     Then I feel my card details and press pay button
       | cardNumber | 1111111111111111 |
